@@ -1,4 +1,3 @@
-import bot
 import time
 
 lastCode = ""

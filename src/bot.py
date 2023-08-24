@@ -1,5 +1,6 @@
+import os
 import discord
-import responses
+from src import responses
 
 # save the previous code
 lastCode = ""
@@ -15,7 +16,10 @@ async def send_response(message, user_message):
 
 
 def run_bot():
-    token = 'MTE0NDExMDA2NDQxNjg3MDQzMg.G9VW8N.Dhc4y4vKZnKzqL0r29k1FPQNAqLImllYcL8Ico'
+    token_path = os.path.join(os.path.dirname(__file__), "..", "Resources", "token.txt")
+    with open(token_path, "r") as token_file:
+        token = token_file.read().strip()
+
     intents = discord.Intents.all()
     client = discord.Client(intents=intents)
 
