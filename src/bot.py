@@ -16,7 +16,7 @@ async def send_response(message, user_message):
 
 
 def run_bot():
-    token_path = os.path.join(os.path.dirname(__file__), "..", "Resources", "token.txt")
+    token_path = os.path.join(os.path.dirname(__file__), "..", "Resources", "../Resources/token/token.txt")
     with open(token_path, "r") as token_file:
         token = token_file.read().strip()
 
@@ -36,12 +36,13 @@ def run_bot():
         user_message = str(message.content)
         channel = str(message.channel)
 
-        print(f"{username} said: '{user_message}' ({channel})")
-
         if "join.btd6.com/coop/" in user_message.lower():
             await message.edit(suppress=True)
-
-        await send_response(message, user_message)
+            await send_response(message, user_message)
+            print(f"{username} said: '{user_message}' ({channel})")
+        elif "!code" == user_message.lower():
+            await send_response(message, user_message)
+            print(f"{username} said: '{user_message}' ({channel})")
 
     client.run(token)
 
