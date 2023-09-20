@@ -11,6 +11,17 @@ def handle_response(message) -> str:
         code = (message.partition("coop/")[2]).upper()
         lastCode = code
         startTime = time.time()
+        if len(code[0:]) != 6:
+            return f"Invalid code: {code[0:]}"
+        return code[0:6]
+
+    if "join.btd6.com/boss/" in message.lower():
+        message = message.lower()
+        code = (message.partition("boss/")[2]).upper()
+        lastCode = code
+        startTime = time.time()
+        if len(code[0:]) != 6:
+            return f"Invalid code: {code[0:]}"
         return code[0:6]
 
     if message == "!code":
